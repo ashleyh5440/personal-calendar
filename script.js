@@ -5,24 +5,26 @@
 $(function () {
   // TODO: Add a listener for click events on the save button. 
   const saveBtnEl = $(".saveBtn")
-  
+
   saveBtnEl.on("click", function(){ //clicking save button saves content in textarea to local storage
     
   })
-
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. 
-  
-  function updateCurrentTime() { //gets current time
-    var currentTime = dayjs();
-    var formattedTime = currentTime.format("h:mm A");
-    document.getElementById('currentTime').textContent = "Current Time: " + formattedTime;
+ 
+//display the current time  
+function updateCurrentTime() { //gets current time
+  let currentTime = dayjs();
+  let formattedTime = currentTime.format("h:mm A");
+  let formattedDate = currentTime.format("dddd, MMMM D, YYYY");
+  document.getElementById('currentTime').textContent = "Current Time: " + formattedTime;
+  document.getElementById('currentDay').textContent = "Date: " + formattedDate;
 }
 
 updateCurrentTime();
 
 setInterval(updateCurrentTime, 60000); //update every 60 sec
   
+//comparing current time to time-block for past present future class
+
   // HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
