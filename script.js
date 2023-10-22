@@ -4,6 +4,8 @@
 
 $(function () {
   // TODO: Add a listener for click events on the save button. 
+  const currentHour = new Date().getHours();
+  
   const saveBtnEl = $(".saveBtn")
 
   saveBtnEl.on("click", function(){ //clicking save button saves content in textarea to local storage
@@ -27,19 +29,30 @@ setInterval(updateCurrentTime, 60000); //update every 60 sec
 $(".time-block").each(function () { //selects all elements with time-block class
   const blockHour = parseInt($(this).attr("id").split("-")[1]); //get hour from block's id
 
+  if (blockHour < currentHour) {
+    $(this).addClass('past');
+   } else if (blockHour === currentHour) {
+    $(this).removeClass('past');
+    $(this).addClass('present');
+   } else {
+    $(this).removeClass('past');
+    $(this).removeClass('present');
+    $(this).addClass('future');
+   }
+  });
+
   // Day.js object for block's time
-  const blockTime = currentTime.set("hour", blockHour);
-  console.log(currentTime);
+  // const blockTime = currentTime.set("hour", blockHour);
 
   // Compare block's time with current time
-  if (blockTime.isBefore(currentTime, "hour")) {
-      $(this).removeClass("present future")
-  } else if (blockTime.isSame(currentTime, "hour")) {
-      $(this).removeClass("past future")
-  } else {
-      $(this).removeClass("past present")
-  }
-});
+//   if (blockTime.isBefore(currentTime, "hour")) {
+//       $(this).removeClass("present future")
+//   } else if (blockTime.isSame(currentTime, "hour")) {
+//       $(this).removeClass("past future")
+//   } else {
+//       $(this).removeClass("past present")
+//   }
+// });
 
 
   // HINTS: How can the id
