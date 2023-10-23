@@ -4,7 +4,8 @@
 
 $(function () {
   // TODO: Add a listener for click events on the save button. 
-  const currentHour = new Date().getHours();
+  const currentHour = new Date().getHours(); //defines current hour
+  console.log(currentHour);
   
   const saveBtnEl = $(".saveBtn")
 
@@ -12,7 +13,7 @@ $(function () {
     
   })
  
-//display the current time  
+//display the current date/time  
 function updateCurrentTime() { //gets current time
   let currentTime = dayjs();
   let formattedTime = currentTime.format("h:mm A");
@@ -41,34 +42,6 @@ $(".time-block").each(function () { //selects all elements with time-block class
    }
   });
 
-  // Day.js object for block's time
-  // const blockTime = currentTime.set("hour", blockHour);
-
-  // Compare block's time with current time
-//   if (blockTime.isBefore(currentTime, "hour")) {
-//       $(this).removeClass("present future")
-//   } else if (blockTime.isSame(currentTime, "hour")) {
-//       $(this).removeClass("past future")
-//   } else {
-//       $(this).removeClass("past present")
-//   }
-// });
-
-
-  // HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. 
+  // TODO: Add code to get any user input that was saved in localStorage and set the values of the corresponding textarea elements.  
   
-  
-  
-  
-  
-  // HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
 });
