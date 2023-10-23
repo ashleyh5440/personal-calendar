@@ -10,7 +10,9 @@ $(function () {
   const saveBtnEl = $(".saveBtn")
 
   saveBtnEl.on("click", function(){ //clicking save button saves content in textarea to local storage
-    
+    let time = $(this).parent().attr("id")
+    let task = $(this).siblings(".description").val()//getting value out of button's sibling with the class of description
+    localStorage.setItem(time, task); //sets in local storage
   })
  
 //display the current date/time  
@@ -41,6 +43,8 @@ $(".time-block").each(function () { //selects all elements with time-block class
     $(this).addClass('future');
    }
   });
+  for (let i = 9; i < 18; i++){
+  $("#hour-" + i + " .description").val(localStorage.getItem("hour-" + i))}
 
   // TODO: Add code to get any user input that was saved in localStorage and set the values of the corresponding textarea elements.  
   
